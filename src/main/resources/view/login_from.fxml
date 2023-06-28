@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -10,32 +9,35 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="572.0" prefWidth="498.0" style="-fx-background-color: #d2dae2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapplication.LoginFromController">
+<AnchorPane fx:id="loadFormContext" prefHeight="570.0" prefWidth="500.0" style="-fx-background-color: #d2dae2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapplication.controller.LoginFromController">
    <children>
-      <TextArea layoutX="40.0" layoutY="52.0" prefHeight="468.0" prefWidth="423.0" style="-fx-background-color: #0fbcf9; -fx-background-color: #17c0eb;">
-         <effect>
-            <DropShadow color="#e87474" />
-         </effect></TextArea>
-      <TextField fx:id="txtUserName" layoutX="126.0" layoutY="286.0" prefHeight="46.0" prefWidth="309.0" promptText="Username" style="-fx-border-color: #74b9ff;">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </TextField>
-      <ImageView fitHeight="46.0" fitWidth="49.0" layoutX="67.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../Final%20Project/images/icons8-user-90.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="142.0" layoutY="107.0" prefHeight="55.0" prefWidth="220.0" text="Login From" textAlignment="CENTER" textFill="#3c0606">
-         <font>
-            <Font name="Calibri Light" size="48.0" />
-         </font>
-      </Label>
-      <Button layoutX="218.0" layoutY="381.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: #17c0eb;" text="Login">
+      <AnchorPane fx:id="root" layoutX="47.0" layoutY="53.0" prefHeight="471.0" prefWidth="404.0" style="-fx-border-color: blue; -fx-background-color: #f5f6fa;">
          <effect>
             <DropShadow />
          </effect>
-      </Button>
+         <children>
+            <Label layoutX="92.0" layoutY="41.0" prefHeight="55.0" prefWidth="220.0" text="Login From" textAlignment="CENTER" textFill="#3c0606">
+               <font>
+                  <Font name="Calibri Light" size="48.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtUserName" layoutX="68.0" layoutY="244.0" prefHeight="46.0" prefWidth="309.0" promptText="Username" style="-fx-border-color: #74b9ff;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <JFXButton fx:id="btnLogin" layoutX="152.0" layoutY="321.0" onAction="#btnLoginOnAction" prefHeight="33.0" prefWidth="100.0" style="-fx-background-color: #17c0eb;" styleClass="edge-button" stylesheets="@../style/Style.css" text="Login">
+               <effect>
+                  <DropShadow height="21.77" radius="8.0525" width="12.44" />
+               </effect>
+            </JFXButton>
+            <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="15.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/user.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
    <effect>
       <DropShadow />

@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane fx:id="root" prefHeight="670.0" prefWidth="549.0" style="-fx-background-color: #d2dae2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapplication.controller.ClientFromController">
+   <children>
+      <AnchorPane layoutX="25.0" layoutY="30.0" prefHeight="609.0" prefWidth="496.0" style="-fx-border-color: blue; -fx-background-color: #f5f6fa;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label layoutX="129.0" layoutY="27.0" prefHeight="52.0" prefWidth="293.0" />
+            <TextArea fx:id="txtTextArea" layoutX="29.0" layoutY="117.0" prefHeight="397.0" prefWidth="437.0" style="-fx-border-color: #17c0eb;" />
+            <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="352.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/lol.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="394.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/cam.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="433.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/send.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtTextField" layoutX="29.0" layoutY="539.0" prefHeight="46.0" prefWidth="319.0" promptText="Enter Your Message " style="-fx-border-color: #17c0eb;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children></AnchorPane>
+   </children>
 </AnchorPane>
