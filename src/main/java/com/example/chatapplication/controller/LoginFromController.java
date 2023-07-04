@@ -24,20 +24,30 @@ public class LoginFromController implements Initializable {
     @FXML
     private AnchorPane root;
 
+    ClientFromController clientFromController;
+
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/view/client_from.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage1 = new Stage();
-        stage1.setScene(scene);
-        stage1.setTitle("");
-        stage1.centerOnScreen();
-        stage1.setResizable(false);
-        stage1.show();
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/client_from.fxml"));
+//        Scene scene = new Scene(root);
+//        Stage stage1 = new Stage();
+//        stage1.setScene(scene);
+//        stage1.setTitle("Chat Space");
+//        stage1.centerOnScreen();
+//        stage1.setResizable(false);
+//        stage1.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/client_from.fxml"));
+        AnchorPane anchorPane = loader.load();
+        clientFromController = loader.getController();
+        clientFromController.setLblUsername(txtUserName.getText());
+        Scene scene = new Scene(anchorPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Chat Space");
+        stage.show();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         txtUserName.requestFocus();
     }
-
 }
