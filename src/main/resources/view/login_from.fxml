@@ -36,7 +36,7 @@
                   <DropShadow height="21.77" radius="8.0525" width="12.44" />
                </effect>
             </JFXButton>
-            <ComboBox fx:id="cmbUsername" editable="true" layoutX="63.0" layoutY="242.0" onAction="#cmbUsernameOnAction" prefHeight="45.0" prefWidth="309.0" promptText="Username" style="-fx-border-color: #74b9ff;" visibleRowCount="15" />
+            <ComboBox fx:id="cmbUsername" editable="true" layoutX="63.0" layoutY="242.0" prefHeight="45.0" prefWidth="309.0" promptText="Username" style="-fx-border-color: #74b9ff;" visibleRowCount="15" />
          </children>
       </AnchorPane>
    </children>

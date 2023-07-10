@@ -1,16 +1,23 @@
 package com.example.chatapplication.controller;
+import com.example.chatapplication.model.clientModel;
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoginFromController implements Initializable {
@@ -25,6 +32,8 @@ public class LoginFromController implements Initializable {
 
     @FXML
     private AnchorPane root;
+
+    private String username_id;
 
     ClientFromController clientFromController;
 
@@ -43,6 +52,22 @@ public class LoginFromController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cmbUsername.requestFocus();
+        loadComboBox();
+    }
+
+    private void loadComboBox() {
+        try {
+            ObservableList<String> obList = FXCollections.observableArrayList();
+            List<String> codes = clientModel.getUsername();
+
+            for (String code : codes) {
+                obList.add(code);
+            }
+            cmbUsername.setItems(obList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "SQL Error!").show();
+        }
     }
 
     public void btnRegisterOnAction(ActionEvent actionEvent) throws IOException {
@@ -55,7 +80,4 @@ public class LoginFromController implements Initializable {
         stage.show();
     }
 
-    public void cmbUsernameOnAction(ActionEvent actionEvent) {
-
-    }
 }
