@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="loadFormContext" prefHeight="570.0" prefWidth="500.0" style="-fx-background-color: #d2dae2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapplication.controller.LoginFromController">
+<AnchorPane fx:id="loadFormContext" prefHeight="570.0" prefWidth="488.0" style="-fx-background-color: #d2dae2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatapplication.controller.LoginFromController">
    <children>
       <AnchorPane fx:id="root" layoutX="47.0" layoutY="53.0" prefHeight="471.0" prefWidth="404.0" style="-fx-border-color: blue; -fx-background-color: #f5f6fa;">
          <effect>
@@ -21,12 +21,7 @@
                   <Font name="Calibri Light" size="48.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUserName" layoutX="68.0" layoutY="244.0" prefHeight="46.0" prefWidth="309.0" promptText="Username" style="-fx-border-color: #74b9ff;">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </TextField>
-            <JFXButton fx:id="btnLogin" layoutX="152.0" layoutY="321.0" onAction="#btnLoginOnAction" prefHeight="33.0" prefWidth="100.0" style="-fx-background-color: #17c0eb;" styleClass="edge-button" stylesheets="@../style/Style.css" text="Login">
+            <JFXButton fx:id="btnLogin" layoutX="143.0" layoutY="321.0" onAction="#btnLoginOnAction" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #17c0eb;" styleClass="edge-button" stylesheets="@../style/Style.css" text="Login">
                <effect>
                   <DropShadow height="21.77" radius="8.0525" width="12.44" />
                </effect>
@@ -36,6 +31,12 @@
                   <Image url="@../image/user.png" />
                </image>
             </ImageView>
+            <JFXButton fx:id="btnRegister" layoutX="143.0" layoutY="376.0" onAction="#btnRegisterOnAction" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #17c0eb;" styleClass="edge-button" stylesheets="@../style/Style.css" text="Register">
+               <effect>
+                  <DropShadow height="21.77" radius="8.0525" width="12.44" />
+               </effect>
+            </JFXButton>
+            <ComboBox fx:id="cmbUsername" editable="true" layoutX="63.0" layoutY="242.0" onAction="#cmbUsernameOnAction" prefHeight="45.0" prefWidth="309.0" promptText="Username" style="-fx-border-color: #74b9ff;" visibleRowCount="15" />
          </children>
       </AnchorPane>
    </children>

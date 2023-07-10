@@ -4,9 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -19,7 +18,10 @@ public class LoginFromController implements Initializable {
     public JFXButton btnLogin;
     public AnchorPane loadFormContext;
     @FXML
-    private TextField txtUserName;
+    private ComboBox<String> cmbUsername;
+
+    @FXML
+    private JFXButton btnRegister;
 
     @FXML
     private AnchorPane root;
@@ -27,18 +29,10 @@ public class LoginFromController implements Initializable {
     ClientFromController clientFromController;
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException{
-//        Parent root = FXMLLoader.load(getClass().getResource("/view/client_from.fxml"));
-//        Scene scene = new Scene(root);
-//        Stage stage1 = new Stage();
-//        stage1.setScene(scene);
-//        stage1.setTitle("Chat Space");
-//        stage1.centerOnScreen();
-//        stage1.setResizable(false);
-//        stage1.show();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/client_from.fxml"));
         AnchorPane anchorPane = loader.load();
         clientFromController = loader.getController();
-        clientFromController.setLblUsername(txtUserName.getText());
+        clientFromController.setLblUsername(cmbUsername.getValue());
         Scene scene = new Scene(anchorPane);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -48,6 +42,20 @@ public class LoginFromController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtUserName.requestFocus();
+        cmbUsername.requestFocus();
+    }
+
+    public void btnRegisterOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register_from.fxml"));
+        AnchorPane anchorPane = loader.load();
+        Scene scene = new Scene(anchorPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Register From");
+        stage.show();
+    }
+
+    public void cmbUsernameOnAction(ActionEvent actionEvent) {
+
     }
 }
