@@ -78,6 +78,7 @@ public class LoginFromController implements Initializable {
         stage.setScene(scene);
         stage.setTitle("Register From");
         stage.show();
+        root.getScene().getWindow().hide();
     }
 
 }
