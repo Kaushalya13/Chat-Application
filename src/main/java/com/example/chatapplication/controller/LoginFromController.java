@@ -42,6 +42,7 @@ public class LoginFromController implements Initializable {
         AnchorPane anchorPane = loader.load();
         clientFromController = loader.getController();
         clientFromController.setLblUsername(cmbUsername.getValue());
+        clear();
         Scene scene = new Scene(anchorPane);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -49,6 +50,9 @@ public class LoginFromController implements Initializable {
         stage.show();
     }
 
+    public void clear(){
+        cmbUsername.setValue("");
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cmbUsername.requestFocus();

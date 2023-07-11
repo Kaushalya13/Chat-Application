@@ -72,8 +72,14 @@ public class RegisterFromController implements Initializable {
                 new Alert(Alert.AlertType.WARNING,"Try again", ButtonType.OK).show();
             }
         }
+        clear();
     }
 
+    public void clear(){
+        txtUser_id.setText("");
+        txtUserName.setText("");
+        txtPassword.setText("");
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         generateNextUserId();
