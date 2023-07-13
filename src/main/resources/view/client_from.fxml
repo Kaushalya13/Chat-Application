@@ -35,7 +35,7 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <VBox fx:id="vBoxSendMsg" layoutX="19.0" layoutY="117.0" prefHeight="403.0" prefWidth="388.0" style="-fx-border-color: #17c0eb;" />
+            <VBox fx:id="vBoxSendMsg" layoutX="19.0" layoutY="117.0" prefHeight="403.0" prefWidth="388.0" style="-fx-border-color: #17c0eb; -fx-background-color: #cf6a87;" />
             <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="286.0" layoutY="544.0" onMouseClicked="#emojiOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/lol.png" />

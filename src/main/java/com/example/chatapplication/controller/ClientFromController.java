@@ -1,7 +1,6 @@
 package com.example.chatapplication.controller;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -43,7 +42,7 @@ public class ClientFromController extends Thread {
     public void initialize(){
         try {
             socket = new Socket("localhost",6000);
-            System.out.println("Socket is connected");
+//            System.out.println("Socket is connected");
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             printWriter = new PrintWriter(socket.getOutputStream(),true);
             this.start();
@@ -52,20 +51,11 @@ public class ClientFromController extends Thread {
             e.printStackTrace();
         }
     }
-    public void sendOnAction(MouseEvent mouseEvent) {
-        sendMsg();
+
+    public void setLblUsername(String text) {
+        lblUsername.setText(text);
     }
 
-    public void sendMsg(){
-        String msg = txtTextField.getText();
-        printWriter.println(lblUsername.getText() + ":" + msg);
-        System.out.println(lblUsername.getText() + ":" +msg);
-        txtTextField.clear();
-
-        if (msg.equalsIgnoreCase("Bye") || (msg.equalsIgnoreCase("logout"))){
-            System.exit(0);
-        }
-    }
     @Override
     public void run(){
         try {
@@ -101,25 +91,25 @@ public class ClientFromController extends Thread {
 
                     ImageView imageView = new ImageView(image);
 
-                    imageView.setFitHeight(150);
-                    imageView.setFitWidth(200);
+                    imageView.setFitHeight(100);
+                    imageView.setFitWidth(120);
 
                     HBox hBox = new HBox(10);
-                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                    hBox.setAlignment(Pos.BOTTOM_LEFT);
 
                     if (!cmd.equalsIgnoreCase(lblUsername.getText())) {
-                        vBoxSendMsg.setAlignment(Pos.TOP_LEFT);
-                        hBox.setAlignment(Pos.CENTER_LEFT);
+                        vBoxSendMsg.setAlignment(Pos.TOP_RIGHT);
+                        hBox.setAlignment(Pos.CENTER_RIGHT);
 
-                        Text text1 = new Text("  " + cmd + " :");
+                        Text text1 = new Text("  " + cmd + " : ");
                         hBox.getChildren().add(text1);
                         hBox.getChildren().add(imageView);
                         hBox.setStyle("-fx-alignment: center-left;-fx-fill-height: true;-fx-min-height: 50;-fx-pref-width: 520;-fx-max-width: 520;-fx-padding: 10");
 
                     } else {
-                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                        hBox.setAlignment(Pos.BOTTOM_LEFT);
                         hBox.getChildren().add(imageView);
-                        Text text1 = new Text(": Me ");
+                        Text text1 = new Text(" : Me ");
                         hBox.getChildren().add(text1);
                         hBox.setStyle("-fx-alignment: center-right;-fx-fill-height: true;-fx-min-height: 50;-fx-pref-width: 520;-fx-max-width: 520;-fx-padding: 10");
                     }
@@ -144,17 +134,17 @@ public class ClientFromController extends Thread {
                     HBox hBox = new HBox(12); //12
 
                     if (!cmd.equalsIgnoreCase(lblUsername.getText() + ":")) {
-                        vBoxSendMsg.setAlignment(Pos.TOP_LEFT);
+                        vBoxSendMsg.setAlignment(Pos.TOP_RIGHT);
                         hBox.setAlignment(Pos.CENTER_LEFT);
                         hBox.setStyle("-fx-alignment: center-left;-fx-fill-height: true;-fx-min-height: 50;-fx-pref-width: 520;-fx-max-width: 520;-fx-padding: 10");
-                        flow.setStyle("-fx-background-color:   white;-fx-background-radius:15;-fx-font-size: 15;-fx-font-weight: normal;-fx-text-fill: black;-fx-wrap-text: true;-fx-alignment: center-left;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
+                        flow.setStyle("-fx-background-color:   #546de5;-fx-background-radius:15;-fx-font-size: 15;-fx-font-weight: normal;-fx-text-fill: black;-fx-wrap-text: true;-fx-alignment: center-left;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
                         hBox.getChildren().add(flow);
                     } else {
                         Text text2 = new Text(fullMsg + ": Me");
                         TextFlow flow2 = new TextFlow(text2);
-                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                        hBox.setAlignment(Pos.BOTTOM_LEFT);
                         hBox.setStyle("-fx-alignment: center-right;-fx-fill-height: true;-fx-min-height: 50;-fx-pref-width: 520;-fx-max-width: 520;-fx-padding: 10");
-                        flow2.setStyle("-fx-background-color:  #CCFF9A;-fx-background-radius:15;-fx-font-size: 15;-fx-font-weight: normal;-fx-text-fill: white;-fx-wrap-text: true;-fx-alignment: center-left;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
+                        flow2.setStyle("-fx-background-color:   #ff6b6b;-fx-background-radius:15;-fx-font-size: 15;-fx-font-weight: normal;-fx-text-fill: white;-fx-wrap-text: true;-fx-alignment: center-left;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
                         hBox.getChildren().add(flow2);
                     }
                     Platform.runLater(() -> vBoxSendMsg.getChildren().addAll(hBox));
@@ -165,7 +155,20 @@ public class ClientFromController extends Thread {
             e.printStackTrace();
         }
     }
+    public void sendOnAction(MouseEvent mouseEvent) {
+        sendMsg();
+    }
 
+    public void sendMsg(){
+        String msg = txtTextField.getText();
+        printWriter.println(lblUsername.getText() + ":" + msg);
+        System.out.println(lblUsername.getText() + ":" +msg);
+        txtTextField.clear();
+
+        if (msg.equalsIgnoreCase("Bye") || (msg.equalsIgnoreCase("logout"))){
+            System.exit(0);
+        }
+    }
     public void imgOnAction(MouseEvent mouseEvent) {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         fileChooser = new FileChooser();
@@ -176,9 +179,5 @@ public class ClientFromController extends Thread {
 
     public void emojiOnAction(MouseEvent mouseEvent) {
         
-    }
-
-    public void setLblUsername(String text) {
-        lblUsername.setText(text);
     }
 }
