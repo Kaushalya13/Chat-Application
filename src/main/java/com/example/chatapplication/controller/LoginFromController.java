@@ -1,6 +1,8 @@
 package com.example.chatapplication.controller;
+import com.example.chatapplication.Server;
 import com.example.chatapplication.model.clientModel;
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +21,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class LoginFromController implements Initializable {
+public class LoginFromController extends Application implements Initializable {
 
     public JFXButton btnLogin;
     public AnchorPane loadFormContext;
@@ -36,11 +38,25 @@ public class LoginFromController implements Initializable {
 
     ClientFromController clientFromController;
 
+    public void start(Stage stage) throws IOException {
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login_from.fxml"))));
+        stage.show();
+
+        new Thread(()->{
+            Server server = new Server();
+
+                try {
+                    server.Server();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+        }).start();
+    }
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/client_from.fxml"));
         AnchorPane anchorPane = loader.load();
         clientFromController = loader.getController();
-        clientFromController.setLblUsername(cmbUsername.getValue());
+        clientFromController.setLblUsername( cmbUsername.getValue());
         clear();
         Scene scene = new Scene(anchorPane);
         Stage stage = new Stage();
