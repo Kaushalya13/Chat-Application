@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -37,14 +38,14 @@ public class LoginFromController extends Application implements Initializable {
     private String username_id;
 
     ClientFromController clientFromController;
-
+    public ArrayList<String> arrayList = new ArrayList<>();
+    @Override
     public void start(Stage stage) throws IOException {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login_from.fxml"))));
         stage.show();
 
         new Thread(()->{
             Server server = new Server();
-
                 try {
                     server.Server();
                 } catch (IOException e) {
@@ -56,7 +57,7 @@ public class LoginFromController extends Application implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/client_from.fxml"));
         AnchorPane anchorPane = loader.load();
         clientFromController = loader.getController();
-        clientFromController.setLblUsername( cmbUsername.getValue());
+        clientFromController.setLblUsername(cmbUsername.getValue());
         clear();
         Scene scene = new Scene(anchorPane);
         Stage stage = new Stage();
@@ -70,7 +71,6 @@ public class LoginFromController extends Application implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cmbUsername.requestFocus();
         loadComboBox();
     }
 
