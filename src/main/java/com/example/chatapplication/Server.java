@@ -1,15 +1,13 @@
-package com.example.chatapplication.controller;
-
-import com.example.chatapplication.Client;
+package com.example.chatapplication;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class ServerFromController {
+public class Server {
     private static ArrayList<Client> clientArrayList = new ArrayList<>();
-    private static void Server() throws IOException {
+    public static void Server() throws IOException {
         ServerSocket serverSocket = new ServerSocket(6000);
         Socket socket;
         int index = 1;

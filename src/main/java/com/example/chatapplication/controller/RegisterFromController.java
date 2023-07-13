@@ -2,6 +2,7 @@ package com.example.chatapplication.controller;
 
 import com.example.chatapplication.model.clientModel;
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
