@@ -50,7 +50,6 @@ public class RegisterFromController implements Initializable {
     @FXML
     private ImageView imgBack;
 
-
     public void btnRegisterOnAction(ActionEvent actionEvent) throws SQLException {
         String id = txtUser_id.getText();
         String name = txtUserName.getText();
