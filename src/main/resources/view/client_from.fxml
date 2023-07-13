@@ -20,7 +20,7 @@
                <font>
                   <Font name="Arial Bold" size="22.0" />
                </font></Label>
-            <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="335.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="335.0" layoutY="545.0" onMouseClicked="#imgOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/cam.png" />
                </image>
@@ -36,7 +36,7 @@
                </font>
             </TextField>
             <VBox fx:id="vBoxSendMsg" layoutX="19.0" layoutY="117.0" prefHeight="403.0" prefWidth="388.0" style="-fx-border-color: #17c0eb;" />
-            <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="286.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="286.0" layoutY="544.0" onMouseClicked="#emojiOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/lol.png" />
                </image>
