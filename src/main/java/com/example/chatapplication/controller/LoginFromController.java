@@ -39,6 +39,10 @@ public class LoginFromController extends Application implements Initializable {
 
     ClientFromController clientFromController;
     public ArrayList<String> arrayList = new ArrayList<>();
+
+    public static void main(String[] args) {
+        launch(args);
+    }
     @Override
     public void start(Stage stage) throws IOException {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login_from.fxml"))));
