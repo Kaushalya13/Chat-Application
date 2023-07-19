@@ -37,9 +37,11 @@ public class LoginFromController extends Application implements Initializable {
 
     private String username_id;
 
+    private static final List<String> usedUserNames = new ArrayList<>();
+
+    private final ObservableList<String> obList = FXCollections.observableArrayList();
     ClientFromController clientFromController;
     public ArrayList<String> arrayList = new ArrayList<>();
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -58,16 +60,30 @@ public class LoginFromController extends Application implements Initializable {
         }).start();
     }
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException{
+        String userName = cmbUsername.getValue();
+        if (userName == null || userName.isEmpty()){
+            return;
+        }
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/client_from.fxml"));
         AnchorPane anchorPane = loader.load();
         clientFromController = loader.getController();
-        clientFromController.setLblUsername(cmbUsername.getValue());
+        clientFromController.setLblUsername(userName);
+
+        usedUserNames.add(userName);
+        loadComboBox();
+
         clear();
         Scene scene = new Scene(anchorPane);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Chat Space");
         stage.show();
+
+        stage.setOnCloseRequest(event->{
+            usedUserNames.remove(userName);
+            loadComboBox();
+        });
     }
 
     public void clear(){
@@ -80,11 +96,16 @@ public class LoginFromController extends Application implements Initializable {
 
     private void loadComboBox() {
         try {
-            ObservableList<String> obList = FXCollections.observableArrayList();
-            List<String> codes = clientModel.getUsername();
+            obList.clear();
+            List<String> usernames = clientModel.getUsername();
 
-            for (String code : codes) {
-                obList.add(code);
+            L1:for (String userName : usernames) {
+                for (String s : usedUserNames){
+                    if (s.equals(userName)){
+                        continue L1;
+                    }
+                }
+                obList.add(userName);
             }
             cmbUsername.setItems(obList);
         } catch (SQLException e) {
